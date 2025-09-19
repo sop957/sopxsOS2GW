@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载 sopxsOS2 - 下一代操作系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a1929 0%, #122c4d 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .header {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(79, 195, 247, 0.2);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4fc3f7, #0288d1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(to right, #4fc3f7, #29b6f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav a {
+            color: #b0bec5;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        .nav a:hover {
+            color: #4fc3f7;
+        }
+        
+        .download-container {
+            background: linear-gradient(135deg, #1a3a5f 0%, #0f2541 100%);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            border: 1px solid rgba(79, 195, 247, 0.1);
+        }
+        
+        .container-header {
+            background: linear-gradient(90deg, #1565c0, #0d47a1);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .container-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 35px;
+            background: rgba(0, 30, 60, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(79, 195, 247, 0.1);
+        }
+        
+        .file-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4fc3f7, #0288d1);
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 25px;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .file-details h2 {
+            font-size: 26px;
+            color: #4fc3f7;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .file-details p {
+            color: #90caf9;
+            font-size: 16px;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(90deg, #1565c0, #0d47a1);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(13, 71, 161, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(90deg, #0d47a1, #1565c0);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(13, 71, 161, 0.6);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        .download-btn i {
+            margin-right: 12px;
+        }
+        
+        .security-note {
+            background-color: rgba(21, 101, 192, 0.15);
+            border-left: 4px solid #4fc3f7;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .security-note h3 {
+            color: #4fc3f7;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .security-note p {
+            color: #bbdefb;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .verification {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: rgba(21, 101, 192, 0.15);
+            border-radius: 10px;
+            border: 1px solid rgba(79, 195, 247, 0.1);
+        }
+        
+        .verification h3 {
+            color: #4fc3f7;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .verification-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            color: #bbdefb;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(79, 195, 247, 0.1);
+        }
+        
+        .verification-details span:last-child {
+            font-weight: 500;
+            color: #4fc3f7;
+        }
+        
+        .warning {
+            background-color: rgba(255, 152, 0, 0.15);
+            border-left: 4px solid #ff9800;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .warning h3 {
+            color: #ffb74d;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .warning p {
+            color: #ffe0b2;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+        
+        .feature {
+            flex: 1;
+            background: rgba(0, 30, 60, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(79, 195, 247, 0.1);
+        }
+        
+        .feature i {
+            font-size: 36px;
+            color: #4fc3f7;
+            margin-bottom: 15px;
+        }
+        
+        .feature h4 {
+            color: #4fc3f7;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .feature p {
+            color: #bbdefb;
+            font-size: 14px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #90caf9;
+            font-size: 14px;
+            border-top: 1px solid rgba(79, 195, 247, 0.1);
+            width: 100%;
+            max-width: 1200px;
+            margin-top: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .features {
+                flex-direction: column;
+            }
+            
+            .file-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .file-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">S</div>
+            <div class="logo-text">sopxsOS2</div>
+        </div>
+        <div class="nav">
+            <a href="#">首页</a>
+            <a href="#">功能</a>
+            <a href="#">下载</a>
+            <a href="#">文档</a>
+            <a href="#">支持</a>
+        </div>
+    </div>
+    
+    <div class="download-container">
+        <div class="container-header">
+            <h1>下载 sopxsOS2</h1>
+            <p>下一代操作系统 - 安全、高效、智能</p>
+        </div>
+        
+        <div class="content">
+            <div class="file-info">
+                <div class="file-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div class="file-details">
+                    <h2>sopxsOS2.exe</h2>
+                    <p>应用程序文件 · 12.8 MB · 版本 2.4.1</p>
+                </div>
+            </div>
+            
+            <a href="https://m803.lanosso.com:446/09191900254621498bb/2025/09/19/a8b238c02885868190759b65aea3741d.exe?st=Q8FSUd45ziBGQap2SxxqpA&e=1758285141&b=ByYKZVcnVypWcANlBAcGMFZcDgRXZgUtUzBdfgcxUn5TM1t1CWxYJVJi&fi=254621498&pid=39-78-147-211&up=2&mp=0&co=0" class="download-btn" download="sopxsOS2.exe">
+                <i class="fas fa-download"></i>立即下载 sopxsOS2.exe
+            </a>
+            
+            <div class="security-note">
+                <h3>安全提示</h3>
+                <p>此文件来自官方安全来源，下载前请确保您信任该提供商。建议在运行任何可执行文件前使用杀毒软件进行扫描，并验证文件哈希值以确保完整性。</p>
+            </div>
+            
+            <div class="verification">
+                <h3>文件验证信息</h3>
+                <div class="verification-details">
+                    <span>提供方:</span>
+                    <span>王光骅</span>
+                </div>
+                <div class="verification-details">
+                    <span>安全连接:</span>
+                    <span>已启用 (HTTPS)</span>
+                </div>
+                <div class="verification-details">
+                    <span>最后更新:</span>
+                    <span>2023年9月18日</span>
+                </div>
+                <div class="verification-details">
+                    <span>文件哈希值:</span>
+                    <span>e471f01ca3a1ec3cac938069dd581120</span>
+                </div>
+            </div>
+            
+            <div class="warning">
+                <h3>重要警告</h3>
+                <p>仅从可信来源下载和运行可执行文件。运行未知来源的软件可能对您的计算机安全构成风险。请确保您的系统满足最低系统要求，并在安装前备份重要数据。</p>
+                <p>浏览器可能提示有风险</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>高级安全</h4>
+                    <p>内置多层安全保护，防止恶意软件和未经授权的访问</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h4>卓越性能</h4>
+                    <p>优化的系统内核，提供更快的响应速度和更高的效率</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-sync-alt"></i>
+                    <h4>无缝更新</h4>
+                    <p>自动后台更新，无需用户干预，始终保持最新版本</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 sopxsOS2 - 版权所有 | 隐私政策 | 服务条款 | 技术支持</p>
+        </div>
+    </div>
+</body>
+</html>
